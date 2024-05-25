@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:4200"
 };
 
 app.use(cors(corsOptions));
@@ -31,10 +31,14 @@ db.mongoose
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to wael application." });
 });
 
-require("./app/routes/turorial.routes")(app);
+// Use Game routes
+require('./app/routes/game.routes')(app);
+
+// Use Joueur routes
+require('./app/routes/joueur.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
